@@ -1,21 +1,19 @@
 class BlogsController < ApplicationController
+  before_action :authorize_request
   before_action :set_blog, only: [:show, :update, :destroy]
 
-  # GET /blogs
   def index
-    @blogs = Blog.all
+    @blogs = current_user.blogs.all
 
     render json: @blogs
   end
 
-  # GET /blogs/1
   def show
     render json: @blog
   end
 
-  # POST /blogs
   def create
-    @blog = Blog.new(blog_params)
+    @blog = current_user.blogs.new(blog_params)
 
     if @blog.save
       render json: @blog, status: :created, location: @blog
@@ -24,7 +22,6 @@ class BlogsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /blogs/1
   def update
     if @blog.update(blog_params)
       render json: @blog
@@ -33,7 +30,6 @@ class BlogsController < ApplicationController
     end
   end
 
-  # DELETE /blogs/1
   def destroy
     @blog.destroy
   end
