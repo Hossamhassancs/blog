@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_secure_password
 
   #relations
-  has_many :blogs
+  has_many :blogs, dependent: :destroy
 
   #validations
   validates :email, presence: true, uniqueness: true
