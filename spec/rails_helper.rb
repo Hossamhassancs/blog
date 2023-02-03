@@ -6,7 +6,7 @@ require_relative '../config/environment'
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
-require database cleaner at the top level
+#require database cleaner at the top level
 require 'database_cleaner'
 
 # [...]
@@ -48,7 +48,7 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-  
+
   # add `FactoryBot` methods
   config.include FactoryBot::Syntax::Methods
 
