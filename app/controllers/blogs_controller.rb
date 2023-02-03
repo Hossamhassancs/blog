@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :update, :destroy]
 
   def index
-    @blogs = current_user.blogs.all
+    @blogs = current_user.blogs
 
     render json: @blogs
   end
